@@ -1,6 +1,6 @@
 # bg_edit
 来吧开启我们的项目吧
-vscode提交
+vscode提交 为啥不行 我淦
 > A Vue.js project
 
 ## Build Setup
