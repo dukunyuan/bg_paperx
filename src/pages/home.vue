@@ -3,8 +3,9 @@
   <div class="main">
     <!--容器布局-->
     <el-container class="main">
-      <el-header height='.3rem'>
+      <el-header>
         <!-- 头部组件 -->
+        <home-header></home-header>
       </el-header>
     <!-- 页面主组件 -->
     <el-main>
@@ -64,15 +65,23 @@
       <!-- 编辑团队 -->
       <home-edit-group></home-edit-group>
     </el-main>
+    <!--底部-->
+    <el-footer>
+      <home-footer></home-footer>
+    </el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
 import HomeEditGroup from '../components/HomeEditGroup'
+import HomeHeader from '../components/HomeHeader'
+import HomeFooter from '../components/HomeFooter'
 export default {
   components: {
-    HomeEditGroup
+    HomeEditGroup,
+    HomeHeader,
+    HomeFooter
   },
   data () {
     return {
