@@ -10,15 +10,15 @@
     </div>
     <!--登陆dialog-->
     <el-dialog title="用户登录" :visible.sync="loginDialog" width="320px">
-      <el-form ref="form" :model="form" label-width="60px">
-        <el-form-item label="用户名">
-          <el-input v-model="form.name"></el-input>
+      <el-form ref="form" :model="form" :rules="rules" label-width="70px">
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="form.username"></el-input>
         </el-form-item>
-        <el-form-item label="密码">
+        <el-form-item label="密码" prop="password">
           <el-input v-model="form.password" show-password></el-input>
         </el-form-item>
         <el-form-item label="验证码">
-          <Verify type="compute" :figure="10" :arith="0" @success="submit"></Verify>
+          <Verify type="compute" :figure="10" :arith="0" @success="submit" @error="error"></Verify>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -27,6 +27,7 @@
 
 <script>
 import Verify from 'vue2-verify'
+import * as api from '../api/index'
 export default {
   name: 'homeHeader',
   components: {
@@ -38,14 +39,37 @@ export default {
       loginDialog: false,
       // 表单
       form: {
-        name: '',
+        username: '',
         password: ''
+      },
+      // 校验
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+        ]
       }
     }
   },
   methods: {
+    // 成功
     submit () {
-      console.log('submit')
+      this.$refs.form.validate(valid => {
+        if (valid) {
+          this.shoot()
+        }
+      })
+    },
+    // 失败
+    error () {
+      this.$message.error('验证码错误！')
+    },
+    shoot () {
+      api.post({url: 'api/login', ...this.form}).then(res => {
+        console.log(123)
+      })
     }
   }
 }
