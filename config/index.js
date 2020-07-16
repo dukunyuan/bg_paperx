@@ -5,12 +5,12 @@
 const path = require('path')
 
 module.exports = {
-  dev: {
+  dev: {    // dev 环境
 
     // Paths
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {
+    assetsSubDirectory: 'static', // 编译输出的二级目录
+    assetsPublicPath: '/',        // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
+    proxyTable: {                  // 需要 proxyTable 代理的接口（可跨域）
       "/api": {
         target: "http://localhost:8088", //设置调用的接口域名和端口
         changeOrigin: true,
@@ -22,7 +22,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8888, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8888, // 运行测试页面的端口
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

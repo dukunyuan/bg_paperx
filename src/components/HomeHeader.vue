@@ -27,7 +27,7 @@
 
 <script>
 import Verify from 'vue2-verify'
-import * as api from '../api/index'
+import api from '../api/http'
 export default {
   name: 'homeHeader',
   components: {
@@ -64,10 +64,10 @@ export default {
     },
     // 失败
     error () {
-      this.$message.error('验证码错误！')
+      this.$message.error('验证码错误!')
     },
     shoot () {
-      api.post({url: 'api/login', ...this.form}).then(res => {
+      api.post({url: '/login', }).then(res => {
         console.log(123)
       })
     }
