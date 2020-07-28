@@ -16,9 +16,11 @@
   "dependencies": {
     "axios": "^0.19.2",
     "element-ui": "^2.13.2",
+    "es6-promise": "^4.2.8",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vue2-verify": "^1.1.5"
+    "vue2-verify": "^1.1.5",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

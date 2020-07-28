@@ -10,7 +10,7 @@ import router from '../Router'
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 // 默认地址
-axios.defaults.baseURL = process.env.API_HOST
+axios.defaults.baseURL = 'http://localhost:8088'
 // 超时时间
 axios.defaults.timeout = 5000
 // http请求拦截器
