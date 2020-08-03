@@ -46,6 +46,7 @@
       return {
         form: {
           name: '',
+          email: '',
           password: '',
           checkPassword: ''
         },
@@ -56,7 +57,11 @@
             { min: 2, max: 12, message: '2~12 个字符', trigger: 'change' }
           ],
           password: [{ required: true, validator: validatePass, trigger: 'blur' }],
-          checkPassword: [{ required: true, validator: validateCheckPass, trigger: 'blur' }]
+          checkPassword: [{ required: true, validator: validateCheckPass, trigger: 'blur' }],
+          email :[
+                  { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+                  { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+                 ]
         }
       };
     },
@@ -65,7 +70,7 @@
         this.$refs['form'].validate(valid => {
           if (valid) {
             this.$axios.post('register', this.form).then(res => {
-              console.log(123)
+              console.log('register')
             })
           }
         });
@@ -75,4 +80,16 @@
 </script>
 
 <style>
+  .register-box {
+    display: flex;
+    padding-top: 10%;
+    margin-left: -5%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-btn {
+    width: 45%;
+    margin-left: -15%;
+  }
 </style>
