@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static', // 编译输出的二级目录
     assetsPublicPath: '/',        // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
     proxyTable: {                  // 需要 proxyTable 代理的接口（可跨域）
-      // "/api": {
-      //   target: "http://localhost:8088", //设置调用的接口域名和端口
-      //   changeOrigin: true,             //跨域
-      //   pathRewrite: {
-      //     "^/api": "" //用'/api' 代替 'http://localhost:8088'
-      //   }
-      // }
+      "/api": {
+        target: "http://localhost:8088/paperx", //设置调用的接口域名和端口
+        changeOrigin: true,             //跨域
+        pathRewrite: {
+          "^/api": "" //用'/api' 代替 'http://localhost:8088'
+        }
+      }
     },
 
     // Various Dev Server settings

@@ -21,62 +21,63 @@
 </template>
 
 <script>
-  export default {
-    name: 'register',
-    data() {
-      var validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请输入密码'));
-        } else {
-          if (this.form.checkpassword !== '') {
-            this.$refs.form.validateField('checkPassword');
-          }
-          callback();
+export default {
+  name: 'register',
+  data () {
+    var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        if (this.form.checkpassword !== '') {
+          this.$refs.form.validateField('checkPassword')
         }
-      };
-      var validateCheckPass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.form.password) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      };
-      return {
-        form: {
-          name: '',
-          email: '',
-          password: '',
-          checkPassword: ''
-        },
-        activeName: 'login',
-        rules: {
-          username: [
-            { required: true, message: '请输入用户名', trigger: 'blur' },
-            { min: 2, max: 12, message: '2~12 个字符', trigger: 'change' }
-          ],
-          password: [{ required: true, validator: validatePass, trigger: 'blur' }],
-          checkPassword: [{ required: true, validator: validateCheckPass, trigger: 'blur' }],
-          email :[
-                  { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-                  { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-                 ]
-        }
-      };
-    },
-    methods: {
-      register() {
-        this.$refs['form'].validate(valid => {
-          if (valid) {
-            this.$axios.post('register', this.form).then(res => {
-              console.log('register')
-            })
-          }
-        });
+        callback()
       }
     }
-  };
+    var validateCheckPass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入密码'))
+      } else if (value !== this.form.password) {
+        callback(new Error('两次输入密码不一致!'))
+      } else {
+        callback()
+      }
+    }
+    return {
+      form: {
+        username: '',
+        email: '',
+        password: '',
+        checkPassword: ''
+      },
+      activeName: 'login',
+      rules: {
+        username: [
+          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { min: 2, max: 12, message: '2~12 个字符', trigger: 'change' }
+        ],
+        password: [{ required: true, validator: validatePass, trigger: 'blur' }],
+        checkPassword: [{ required: true, validator: validateCheckPass, trigger: 'blur' }],
+        email: [
+          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+        ]
+      }
+    }
+  },
+  methods: {
+    register () {
+      this.$refs['form'].validate(valid => {
+        if (valid) {
+          this.$axios.get('register', this.form).then(res => {
+            console.log('register')
+            console.log(res)
+          })
+        }
+      })
+    }
+  }
+}
 </script>
 
 <style>
