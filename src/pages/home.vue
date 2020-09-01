@@ -22,7 +22,7 @@
           <el-menu-item index="7">编辑团队</el-menu-item>
           <el-menu-item index="8">范例评价</el-menu-item>
           <el-menu-item index="9">资讯中心</el-menu-item>
-          <el-menu-item index="10">质保及FAQ</el-menu-item>
+          <el-menu-item index="10"><a href="http://localhost:8088/paperx/register" target="_blank" style="text-decoration:none" >质保及FAQ</a></el-menu-item>
       </el-menu>
       <!--走马灯-->
       <el-carousel height="500px">
@@ -41,7 +41,7 @@
       <!--按钮-->
       <div class="h2_button">
       <el-button type="info" size='medium'>
-        <h2 class="h2_class">查看范例</h2>
+        <h2 class="h2_class" @click="seeExample">查看范例</h2>
       </el-button>
       </div>
       <!--图片三栏-->
@@ -92,6 +92,12 @@ export default {
       img_three_item: [{src: 'static/img_three/g.jpg', word: '英文论文润色'},
         {src: 'static/img_three/i.jpg', word: '科研论文翻译'},
         {src: 'static/img_three/g.jpg', word: '发表全程协助'}]
+    }
+  },
+  methods: {
+    seeExample () {
+      // console.log('seeExample')
+      this.$axios.get('register')
     }
   }
 }

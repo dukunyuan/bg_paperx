@@ -27,7 +27,9 @@
 
 <script>
 import Verify from 'vue2-verify'
-//import * as api from '../api/http'
+import md5 from 'js-md5'
+import { mapMutations } from 'vuex'
+// import * as api from '../api/http'
 export default {
   name: 'homeHeader',
   components: {
@@ -54,6 +56,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setToken']),
     // 成功
     submit () {
       this.$refs.form.validate(valid => {
@@ -68,8 +71,19 @@ export default {
     },
     shoot () {
       let _this = this
-      this.$axios.post('login', this.form).then(res => {
-        console.log(123)
+      this.$axios.post('login', {username: this.form.username, password: md5(this.form.password)}).then(res => {
+        // console.log(res)
+        if (res.data.code === '200') {
+          this.$message({ type: 'success', message: '登录成功' })
+          this.loginDialog = false
+          // _this.setToken({token: res.data.token})
+          this.$store.commit('setToken', res.data.token)
+          // this.$axios.get('register')
+        } else if (res.data.code === '500') {
+          this.$message({ type: 'error', message: res.data.msg })
+        } else {
+          this.$message({ type: 'error', message: '登录错误，请联系程序开发人员！' })
+        }
       })
     }
   }
