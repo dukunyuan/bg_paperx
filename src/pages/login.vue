@@ -19,12 +19,12 @@
 </template>
 
 <script>
-  import register from '@/components/AboutUser/register'
-  import login from '@/components/AboutUser/login'
-  import HomeHeader from '@/components/HomeHeader'
-  export default {
-     components: { register,login,HomeHeader }
-  }
+import register from '@/components/AboutUser/register'
+import login from '@/components/AboutUser/login'
+import HomeHeader from '@/components/HomeHeader'
+export default {
+  components: { register, login, HomeHeader }
+}
 </script>
 <style lang='stylus'>
 .el-tabs__nav-wrap .el-tabs__nav-scroll .el-tabs__nav {

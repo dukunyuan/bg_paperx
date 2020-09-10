@@ -1,0 +1,360 @@
+<template>
+  <div class="main">
+    <!--容器布局-->
+    <el-container class="main">
+      <el-header>
+        <!-- 头部组件 -->
+        <home-header></home-header>
+      </el-header>
+      <!-- 页面主组件 -->
+    <el-main>
+      <!--订单-->
+      <el-form ref="orderForm" :model='orderForm'>
+        <el-form-item label="姓名" prop="name">
+          <el-input v-model="orderForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="手机" prop="telephone">
+          <el-input v-model="orderForm.telephone"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="orderForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="微信" prop="wechat">
+          <el-input v-model="orderForm.wechat"></el-input>
+        </el-form-item>
+        <el-form-item label="你的身份" prop="identity">
+          <el-select v-model="orderForm.identity" placeholder="请选择">
+            <el-option label="教授/研究员" value="professor"></el-option>
+            <el-option label="副教授/副研究员" value="associateProfessor"></el-option>
+            <el-option label="讲师/助理研究员/博士后" value="post-doctoral"></el-option>
+            <el-option label="硕士/博士研究生" value="master"></el-option>
+            <el-option label="本科" value="undergraduate "></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="你的单位" prop="workspace">
+          <el-input v-model="orderForm.workspace"></el-input>
+        </el-form-item>
+        <el-form-item label="你所需要的服务类型" prop="serviceType">
+            <el-radio-group v-model="orderForm.resource">
+            <el-radio label="I. 基础润色 (优惠价：0.3元/word） 包括基础语言校对、语法修改、词汇及句式修改、格式修改等服务内容"></el-radio>
+            <el-radio label="II. 深度润色 (优惠价：0.5元/word）（重点推荐！） 包括语言校对、语法修改、词汇及句式修改、格式修改+行文风格与逻辑、论文查重、提供修改报告、180天内免费修改等服务内容"></el-radio>
+            <el-radio label="III. 专家润色 (优惠价：0.9元/word)  基于深度润色的基础同专业资深教授级编辑精心润色，免费论文查重，Manuscript、response及cover letter 等全程免费修改直至发表"></el-radio>
+        </el-radio-group>
+        </el-form-item>
+        <el-form-item label="您是否需要1V1文稿修改意见讲解服务:" prop="need1v1">
+          <el-switch v-model="orderForm.need"></el-switch>
+        </el-form-item>
+        <el-form-item label="您核定的稿件字数为:" prop="wordsNumber">
+          <el-input v-model="orderForm.wordsNumber"></el-input>
+        </el-form-item>
+        <el-form-item label="您的研究领域:" >
+          <div class="block">
+          <el-cascader
+            v-model="orderForm.researchField"
+            :options="orderForm.researchFieldOptions"
+            :props="{ expandTrigger: 'hover' }"
+            @change="handleChange">
+            </el-cascader>
+        </div>
+        </el-form-item>
+      </el-form>
+    </el-main>
+      <el-footer>
+      <home-footer></home-footer>
+    </el-footer>
+    </el-container>
+  </div>
+</template>
+
+<script>
+import HomeHeader from '../components/HomeHeader'
+import HomeFooter from '../components/HomeFooter'
+export default {
+  name: 'order',
+  components: {HomeHeader, HomeFooter},
+  data () {
+    return {
+      // 订单
+      orderForm: {
+        name: '',
+        telephone: '',
+        email: '',
+        wechat: '',
+        identity: '',
+        workspace: '',
+        serviceType: '',
+        need: false,
+        wordsNumber: '',
+        researchField: '',
+        researchFieldOptions: [
+          {
+            value: '04',
+            label: '04教育学',
+            children: [{
+              value: '0401',
+              label: '0401教育学'},
+            {
+              value: '0402',
+              label: '0402心理学'
+            },
+            {
+              value: '0403',
+              label: '0403体育学'
+            } ]
+          },
+          {
+            value: '05',
+            label: '05文学',
+            children: [{
+              value: '0501',
+              label: '0501中国语言学'},
+            {
+              value: '0502',
+              label: '0502外国语言文学'
+            },
+            {
+              value: '0503',
+              label: '0503新闻传播学'
+            } ]
+          },
+          {
+            value: '06',
+            label: '06历史学',
+            children: [{
+              value: '0601',
+              label: '0601考古学'},
+            {
+              value: '0602',
+              label: '0602中国史'
+            },
+            {
+              value: '0603',
+              label: '0603世界史'
+            }]
+          },
+          {
+            value: '07',
+            label: '07理学',
+            children: [{
+              value: '0701',
+              label: '0701数学'},
+            {
+              value: '0702',
+              label: '0702物理学'
+            },
+            {
+              value: '0703',
+              label: '0703化学'
+            },
+            {
+              value: '0704',
+              label: '0704天文学'
+            },
+            {
+              value: '0705',
+              label: '0705地理学'
+            },
+            {
+              value: '0706',
+              label: '0706大气科学'
+            },
+            {
+              value: '0707',
+              label: '0707海洋科学'
+            }, {
+              value: '0708',
+              label: '0708地球物理学'
+            },
+            {
+              value: '0709',
+              label: '0709地质学'
+            },
+            {
+              value: '0710',
+              label: '0710生物学'
+            },
+            {
+              value: '0711',
+              label: '0711系统科学'
+            },
+            {
+              value: '0712',
+              label: '0712科学技术学'
+            },
+            {
+              value: '0713',
+              label: '0713生态学'
+            },
+            {
+              value: '0714',
+              label: '0714统计学'
+            }]
+          },
+          {
+            value: '08',
+            label: '08工学',
+            children: [{
+              value: '0801',
+              label: '0801力学'},
+            {
+              value: '0802',
+              label: '0802机械工程'
+            },
+            {
+              value: '0803',
+              label: '0803光学工程'
+            },
+            {
+              value: '0804',
+              label: '0804仪器科学与技术'
+            },
+            {
+              value: '0805',
+              label: '0805材料科学与工程'
+            },
+            {
+              value: '0806',
+              label: '0806冶金工程'
+            },
+            {
+              value: '0807',
+              label: '0808动力工程及工程热物理'
+            }, {
+              value: '0808',
+              label: '0808电器工程'
+            },
+            {
+              value: '0809',
+              label: '0809电子科学与技术'
+            },
+            {
+              value: '0810',
+              label: '0810信息与通信工程'
+            },
+            {
+              value: '0811',
+              label: '0811控制科学与工程'
+            },
+            {
+              value: '0812',
+              label: '0812计算机科学与技术'
+            },
+            {
+              value: '0813',
+              label: '0813建筑学'
+            },
+            {
+              value: '0814',
+              label: '0814土木工程'
+            },
+            {
+              value: '0815',
+              label: '0815水利工程'
+            },
+            {
+              value: '0816',
+              label: '0816测绘科学与技术'
+            },
+            {
+              value: '0817',
+              label: '0817化学工程与技术'
+            },
+            {
+              value: '0818',
+              label: '0818地质资源与地质工程'
+            },
+            {
+              value: '0819',
+              label: '0819矿业工程'
+            },
+            {
+              value: '0820',
+              label: '0820石油与天然气工程'
+            },
+            {
+              value: '0821',
+              label: '0821纺织科学与工程'
+            },
+            {
+              value: '0822',
+              label: '0822轻工技术与工程'
+            },
+            {
+              value: '0823',
+              label: '0823交通运输工程'
+            },
+            {
+              value: '0824',
+              label: '0824船舶与海洋工程'
+            },
+            {
+              value: '0825',
+              label: '0825航空宇航科学与技术'
+            },
+            {
+              value: '0826',
+              label: '0826兵器科学与技术'
+            },
+            {
+              value: '0827',
+              label: '0827核科学与技术'
+            },
+            {
+              value: '0828',
+              label: '0828农业工程'
+            },
+            {
+              value: '0829',
+              label: '0829林业工程'
+            },
+            {
+              value: '0830',
+              label: '0830环境科学与工程'
+            },
+            {
+              value: '0831',
+              label: '0831生物医学工程'
+            },
+            {
+              value: '0832',
+              label: '0832食品科学与工程'
+            }, {
+              value: '0833',
+              label: '0833城乡规划学'
+            },
+            {
+              value: '0834',
+              label: '0834风景园林学'
+            },
+            {
+              value: '0835',
+              label: '0835软件工程'
+            },
+            {
+              value: '0836',
+              label: '0836生物工程'
+            },
+            {
+              value: '0837',
+              label: '0837安全科学与工程'
+            },
+            {
+              value: '0838',
+              label: '0838公安技术'
+            }]
+          }
+        ]
+      }
+    }
+  },
+  methods: {
+    handleChange (value) {
+      console.log(value)
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
