@@ -10,19 +10,19 @@
     <el-main>
       <!--订单-->
       <el-form ref="orderForm" :model='orderForm'>
-        <el-form-item label="姓名" prop="name">
+        <el-form-item label="姓名：" prop="name">
           <el-input v-model="orderForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="手机" prop="telephone">
+        <el-form-item label="手机：" prop="telephone">
           <el-input v-model="orderForm.telephone"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱" prop="email">
+        <el-form-item label="邮箱：" prop="email">
           <el-input v-model="orderForm.email"></el-input>
         </el-form-item>
-        <el-form-item label="微信" prop="wechat">
+        <el-form-item label="微信：" prop="wechat">
           <el-input v-model="orderForm.wechat"></el-input>
         </el-form-item>
-        <el-form-item label="你的身份" prop="identity">
+        <el-form-item label="你的身份：" prop="identity">
           <el-select v-model="orderForm.identity" placeholder="请选择">
             <el-option label="教授/研究员" value="professor"></el-option>
             <el-option label="副教授/副研究员" value="associateProfessor"></el-option>
@@ -31,10 +31,10 @@
             <el-option label="本科" value="undergraduate "></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="你的单位" prop="workspace">
+        <el-form-item label="你的单位：" prop="workspace">
           <el-input v-model="orderForm.workspace"></el-input>
         </el-form-item>
-        <el-form-item label="你所需要的服务类型" prop="serviceType">
+        <el-form-item label="你所需要的服务类型：" prop="serviceType">
             <el-radio-group v-model="orderForm.resource">
             <el-radio label="I. 基础润色 (优惠价：0.3元/word） 包括基础语言校对、语法修改、词汇及句式修改、格式修改等服务内容"></el-radio>
             <el-radio label="II. 深度润色 (优惠价：0.5元/word）（重点推荐！） 包括语言校对、语法修改、词汇及句式修改、格式修改+行文风格与逻辑、论文查重、提供修改报告、180天内免费修改等服务内容"></el-radio>
@@ -56,6 +56,24 @@
             @change="handleChange">
             </el-cascader>
         </div>
+        </el-form-item>
+        <el-form-item label="你希望投稿的期刊：" prop="book">
+          <el-input v-model="orderForm.book"></el-input>
+        </el-form-item>
+        <el-form-item label="你希望润色的语言类型：" prop="editType">
+            <el-radio-group v-model="orderForm.editType">
+            <el-radio label="英式英语"></el-radio>
+            <el-radio label="美式英语"></el-radio>
+        </el-radio-group>
+        </el-form-item>
+        <el-form-item label="你稿件的投稿状态：" prop="paperState">
+            <el-radio-group v-model="orderForm.paperState">
+            <el-radio label="全新稿件未投"></el-radio>
+            <el-radio label="编辑返稿（请提供期刊编辑返稿意见）"></el-radio>
+        </el-radio-group>
+        </el-form-item>
+        <el-form-item label="或在下方直接输入：" prop="text">
+          <el-input v-model="orderForm.text"></el-input>
         </el-form-item>
       </el-form>
     </el-main>
@@ -341,138 +359,187 @@ export default {
             {
               value: '0838',
               label: '0838公安技术'
+            }]
+          },
+          {
+            value: '09',
+            label: '09农学',
+            children: [{
+              value: '0901',
+              label: '0901作物学'},
+            {
+              value: '0902',
+              label: '0902园艺学'
             },
             {
-              value: '09',
-              label: '09农学',
-              children: [{
-                value: '0901',
-                label: '0901作物学'},
-              {
-                value: '0902',
-                label: '0902园艺学'
-              },
-              {
-                value: '0903',
-                label: '0903农业资源与环境'
-              },
-              {
-                value: '0904',
-                label: '0904植物保护'
-              },
-              {
-                value: '0905',
-                label: '0905畜牧学'
-              },
-              {
-                value: '0906',
-                label: '0906兽医学'
-              },
-              {
-                value: '0907',
-                label: '0907林学'
-              }, {
-                value: '0908',
-                label: '0908水产'
-              },
-              {
-                value: '0909',
-                label: '0909草学'
-              }]
+              value: '0903',
+              label: '0903农业资源与环境'
             },
             {
-              value: '10',
-              label: '10农学',
-              children: [{
-                value: '1001',
-                label: '1001基础医学'},
-              {
-                value: '1002',
-                label: '1002临床医学'
-              },
-              {
-                value: '1003',
-                label: '1003口腔医学'
-              },
-              {
-                value: '1004',
-                label: '1004公共卫生与预防医学'
-              },
-              {
-                value: '1005',
-                label: '1005中医学'
-              },
-              {
-                value: '1006',
-                label: '1006中西医结合'
-              },
-              {
-                value: '1007',
-                label: '1007药学'
-              },
-              {
-                value: '1008',
-                label: '1008中药学'
-              },
-              {
-                value: '1009',
-                label: '1009特种医学'
-              },
-              {
-                value: '1010',
-                label: '1010医学技术'
-              },
-              {
-                value: '1011',
-                label: '1011护理学'
-              }]
+              value: '0904',
+              label: '0904植物保护'
             },
             {
-              value: '11',
-              label: '11农学',
-              children: [{
-                value: '1101',
-                label: '1101基础医学'},
-              {
-                value: '1102',
-                label: '1102临床医学'
-              },
-              {
-                value: '1103',
-                label: '1103口腔医学'
-              },
-              {
-                value: '1104',
-                label: '1104公共卫生与预防医学'
-              },
-              {
-                value: '1105',
-                label: '1105中医学'
-              },
-              {
-                value: '1106',
-                label: '1106中西医结合'
-              },
-              {
-                value: '1107',
-                label: '1107药学'
-              },
-              {
-                value: '1108',
-                label: '1108中药学'
-              },
-              {
-                value: '1109',
-                label: '1109特种医学'
-              },
-              {
-                value: '1110',
-                label: '1110医学技术'
-              }]
+              value: '0905',
+              label: '0905畜牧学'
+            },
+            {
+              value: '0906',
+              label: '0906兽医学'
+            },
+            {
+              value: '0907',
+              label: '0907林学'
+            }, {
+              value: '0908',
+              label: '0908水产'
+            },
+            {
+              value: '0909',
+              label: '0909草学'
+            }]
+          },
+          {
+            value: '10',
+            label: '10医学',
+            children: [{
+              value: '1001',
+              label: '1001基础医学'},
+            {
+              value: '1002',
+              label: '1002临床医学'
+            },
+            {
+              value: '1003',
+              label: '1003口腔医学'
+            },
+            {
+              value: '1004',
+              label: '1004公共卫生与预防医学'
+            },
+            {
+              value: '1005',
+              label: '1005中医学'
+            },
+            {
+              value: '1006',
+              label: '1006中西医结合'
+            },
+            {
+              value: '1007',
+              label: '1007药学'
+            },
+            {
+              value: '1008',
+              label: '1008中药学'
+            },
+            {
+              value: '1009',
+              label: '1009特种医学'
+            },
+            {
+              value: '1010',
+              label: '1010医学技术'
+            },
+            {
+              value: '1011',
+              label: '1011护理学'
+            }]
+          },
+          {
+            value: '11',
+            label: '11军事学',
+            children: [{
+              value: '1101',
+              label: '1101军事思想及军事历史'},
+            {
+              value: '1102',
+              label: '1102战略学'
+            },
+            {
+              value: '1103',
+              label: '1103战役学'
+            },
+            {
+              value: '1104',
+              label: '1104战术学'
+            },
+            {
+              value: '1105',
+              label: '1105军队指挥学'
+            },
+            {
+              value: '1106',
+              label: '1106军制学'
+            },
+            {
+              value: '1107',
+              label: '1107军队政治工作学'
+            },
+            {
+              value: '1108',
+              label: '1108军事后勤学'
+            },
+            {
+              value: '1109',
+              label: '1109军事装备学'
+            },
+            {
+              value: '1110',
+              label: '1110军事训练学'
+            }]
+          },
+          {
+            value: '12',
+            label: '12管理学',
+            children: [{
+              value: '1201',
+              label: '1201管理科学与工程'},
+            {
+              value: '1202',
+              label: '1202工商管理'
+            },
+            {
+              value: '1203',
+              label: '1203农林经济管理'
+            },
+            {
+              value: '1204',
+              label: '1204公共管理'
+            },
+            {
+              value: '1205',
+              label: '1205图书情报与档案管理'
+            }]
+          },
+          {
+            value: '13',
+            label: '13艺术学',
+            children: [{
+              value: '1301',
+              label: '1301艺术学理论'},
+            {
+              value: '1302',
+              label: '1302音乐与舞蹈学'
+            },
+            {
+              value: '1303',
+              label: '1303戏剧与影视学'
+            },
+            {
+              value: '1304',
+              label: '1304美术学'
+            },
+            {
+              value: '1305',
+              label: '1305设计学'
             }]
           }
         ]
-      }
+      },
+      book: '',
+      editTpye: '',
+      paperState: ''
     }
   },
   methods: {
