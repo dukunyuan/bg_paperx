@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <!--容器布局-->
-    <el-container class="main">
+    <el-container class="main_container">
       <el-header>
         <!-- 头部组件 -->
         <home-header></home-header>
@@ -9,8 +9,9 @@
       <!-- 页面主组件 -->
     <el-main>
       <!--订单-->
-      <el-form ref="orderForm" :model='orderForm'>
-        <el-form-item label="姓名：" prop="name">
+      <div class="orderForm">
+      <el-form ref="orderForm" :model='orderForm' style="width: 30%">
+        <el-form-item label="姓名：" prop="name" >
           <el-input v-model="orderForm.name"></el-input>
         </el-form-item>
         <el-form-item label="手机：" prop="telephone">
@@ -76,6 +77,7 @@
           <el-input v-model="orderForm.text"></el-input>
         </el-form-item>
       </el-form>
+      </div>
     </el-main>
       <el-footer>
       <home-footer></home-footer>
@@ -550,6 +552,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang='stylus'>
+.orderForm{
+  display: flex
+  justify-content: center
+  text-align: center
+}
 </style>
