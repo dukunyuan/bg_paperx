@@ -37,9 +37,15 @@
         </el-form-item>
         <el-form-item label="你所需要的服务类型：" prop="serviceType">
             <el-radio-group v-model="orderForm.resource">
-            <el-radio label="I. 基础润色 (优惠价：0.3元/word） 包括基础语言校对、语法修改、词汇及句式修改、格式修改等服务内容"></el-radio>
-            <el-radio label="II. 深度润色 (优惠价：0.5元/word）（重点推荐！） 包括语言校对、语法修改、词汇及句式修改、格式修改+行文风格与逻辑、论文查重、提供修改报告、180天内免费修改等服务内容"></el-radio>
-            <el-radio label="III. 专家润色 (优惠价：0.9元/word)  基于深度润色的基础同专业资深教授级编辑精心润色，免费论文查重，Manuscript、response及cover letter 等全程免费修改直至发表"></el-radio>
+            <el-tooltip class="item" effect="dark" content="包括基础语言校对、语法修改、词汇及句式修改、格式修改等服务内容" placement="right">
+              <el-radio label="I. 基础润色 (优惠价：0.3元/word） "></el-radio>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content=" 包括语言校对、语法修改、词汇及句式修改、格式修改+行文风格与逻辑、论文查重、提供修改报告、180天内免费修改等服务内容" placement="right">
+              <el-radio label="II. 深度润色 (优惠价：0.5元/word）（重点推荐！）"></el-radio>
+            </el-tooltip>
+            <el-tooltip class="item" effect="dark" content=" 基于深度润色的基础同专业资深教授级编辑精心润色，免费论文查重，Manuscript、response及cover letter 等全程免费修改直至发表" placement="right">
+              <el-radio label="III. 专家润色 (优惠价：0.9元/word)  "></el-radio>
+            </el-tooltip>
         </el-radio-group>
         </el-form-item>
         <el-form-item label="您是否需要1V1文稿修改意见讲解服务:" prop="need1v1">
@@ -556,6 +562,6 @@ export default {
 .orderForm{
   display: flex
   justify-content: center
-  text-align: center
+
 }
 </style>

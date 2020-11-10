@@ -5,7 +5,8 @@
     <el-image class="logo" src="static/logo/logo.png" fit="cover"></el-image>
     <!--登陆-->
     <i class="el-icon-user">
-    <el-button type="text" @click="loginDialog = true">登陆</el-button>
+    <el-button type="text" @click="loginDialog = true" v-if="!store.state.userId">登陆</el-button>
+    <div v-else></div>
     </i>
     </div>
     <!--登陆dialog-->
@@ -78,6 +79,7 @@ export default {
           this.loginDialog = false
           // _this.setToken({token: res.data.token})
           this.$store.commit('setToken', res.data.token)
+          this.$store.commit('setToken', res.data.currentUser.id)
           // this.$axios.get('register')
         } else if (res.data.code === '500') {
           this.$message({ type: 'error', message: res.data.msg })
@@ -92,11 +94,11 @@ export default {
 
 <style scoped lang='stylus'>
 .header_logo{
-  display flex
-  justify-content: space-between
-  .logo{
-  height 50px
-}
+    display flex
+    justify-content: space-between
+    .logo{
+    height 50px
+  }
 }
 
 </style>

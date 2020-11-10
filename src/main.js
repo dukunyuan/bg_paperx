@@ -38,7 +38,7 @@ new Vue({
 axios.interceptors.request.use(config => {
 // 在发送请求之前做些什么
 // 判断是否存在token，如果存在将每个页面header都添加token
-console.log(store.state.token);
+console.log(store.state.token)
   if (store.state.token) {
     config.headers.common['Authorization'] = store.state.token
   }
