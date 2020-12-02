@@ -13,9 +13,9 @@ const store = new Vuex.Store({
       state.token = token
       localStorage.setItem('token', token.token)
     },
-    delUserId (state) {
+    delToken (state) {
       state.userId = ''
-      localStorage.removeItem('userId')
+      localStorage.removeItem('token')
     },
     setUserId (state, userId) {
       state.userId = userId

@@ -14,15 +14,15 @@
                 type='flex'
                 mode="horizontal">
           <el-menu-item index="1"><a href="http://localhost:8888/#/welcome" target="_blank" style="text-decoration:none" >首页</a></el-menu-item>
-          <el-menu-item index="2">论文润色</el-menu-item>
-          <el-menu-item index="3">论文翻译</el-menu-item>
-          <el-menu-item index="4">全程发表</el-menu-item>
-          <el-menu-item index="5">书搞服务</el-menu-item>
-          <el-menu-item index="6">留学书文</el-menu-item>
-          <el-menu-item index="7">编辑团队</el-menu-item>
+          <el-menu-item index="2">订单提交</el-menu-item>
+          <el-menu-item index="3">推荐奖励</el-menu-item>
+          <el-menu-item index="4">往期成果</el-menu-item>
+          <el-menu-item index="5">科研工具</el-menu-item>
+          <el-menu-item index="6">关于我们</el-menu-item>
+          <!-- <el-menu-item index="7">编辑团队</el-menu-item>
           <el-menu-item index="8">范例评价</el-menu-item>
           <el-menu-item index="9">资讯中心</el-menu-item>
-          <el-menu-item index="10"><a href="http://localhost:8088/paperx/register" target="_blank" style="text-decoration:none" >质保及FAQ</a></el-menu-item>
+          <el-menu-item index="10"><a href="http://localhost:8088/paperx/register" target="_blank" style="text-decoration:none" >质保及FAQ</a></el-menu-item> -->
       </el-menu>
       <!--走马灯-->
       <el-carousel height="500px">

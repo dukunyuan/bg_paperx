@@ -4,10 +4,11 @@
     <!--logo-->
     <el-image class="logo" src="static/logo/logo.png" fit="cover"></el-image>
     <!--登陆-->
-    <i class="el-icon-user">
-    <el-button type="text" @click="loginDialog = true" v-if="!store.state.userId">登陆</el-button>
-    <div v-else></div>
-    </i>
+    <div class="loginInfo">
+    <div v-if="!$store.state.userId"><el-button type="text" @click="loginDialog = true" ><i class="el-icon-user">登陆</i></el-button><el-button type="text" @click="handleLogin" >注册</el-button></div>
+    <div v-else>欢迎{{$store.state.userId}}<el-button type="text" @click="handleLogOut" >退出</el-button></div>
+
+    </div>
     </div>
     <!--登陆dialog-->
     <el-dialog title="用户登录" :visible.sync="loginDialog" width="320px">
@@ -40,6 +41,8 @@ export default {
     return {
       // 登录框
       loginDialog: false,
+      // 当前登录用户
+      userId: localStorage.getItem('userId'),
       // 表单
       form: {
         username: '',
@@ -57,8 +60,8 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setToken']),
-    // 成功
+    ...mapMutations(['setToken', 'setUserId', 'delToken', 'delUserId']),
+    // 验证码成功
     submit () {
       this.$refs.form.validate(valid => {
         if (valid) {
@@ -66,7 +69,7 @@ export default {
         }
       })
     },
-    // 失败
+    // 验证码失败
     error () {
       this.$message.error('验证码错误!')
     },
@@ -76,10 +79,11 @@ export default {
         // console.log(res)
         if (res.data.code === '200') {
           this.$message({ type: 'success', message: '登录成功' })
+          this.$router.replace({name: 'welcome'})
           this.loginDialog = false
           // _this.setToken({token: res.data.token})
           this.$store.commit('setToken', res.data.token)
-          this.$store.commit('setToken', res.data.currentUser.id)
+          this.$store.commit('setUserId', res.data.currentUser.id)
           // this.$axios.get('register')
         } else if (res.data.code === '500') {
           this.$message({ type: 'error', message: res.data.msg })
@@ -87,6 +91,26 @@ export default {
           this.$message({ type: 'error', message: '登录错误，请联系程序开发人员！' })
         }
       })
+    },
+    // 注销事件
+    handleLogOut () {
+      this.$confirm('确定注销并返回首页?', {
+        type: 'warning',
+        cancelButtonClass: 'confirmPosition'
+      }).then(() => {
+        this.$message({
+          message: '注销成功',
+          type: 'success'
+        })
+        this.$store.commit('delToken')
+        this.$store.commit('delUserId')
+        this.dialogVisible = false
+        this.$router.replace({name: 'welcome'})
+      })
+    },
+    // 注册
+    handleLogin () {
+      this.$router.replace({name: 'login'})
     }
   }
 }

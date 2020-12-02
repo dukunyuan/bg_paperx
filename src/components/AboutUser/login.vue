@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import md5 from 'js-md5'
 export default {
   name: 'login',
   data () {
@@ -46,8 +47,21 @@ export default {
     login () {
       this.$refs['form'].validate(valid => {
         if (valid) {
-          this.$axios.post('login', this.form).then(res => {
-            console.log('login')
+          this.$axios.post('login', {username: this.form.username, password: md5(this.form.password)}).then(res => {
+            // console.log(res)
+            if (res.data.code === '200') {
+              this.$message({ type: 'success', message: '登录成功' })
+              this.$router.replace({name: 'welcome'})
+              this.loginDialog = false
+              // _this.setToken({token: res.data.token})
+              this.$store.commit('setToken', res.data.token)
+              this.$store.commit('setUserId', res.data.currentUser.id)
+              // this.$axios.get('register')
+            } else if (res.data.code === '500') {
+              this.$message({ type: 'error', message: res.data.msg })
+            } else {
+              this.$message({ type: 'error', message: '登录错误，请联系程序开发人员！' })
+            }
           })
         }
       })
