@@ -6,7 +6,7 @@
     <!--登陆-->
     <div class="loginInfo">
     <div v-if="!$store.state.userId"><el-button type="text" @click="loginDialog = true" ><i class="el-icon-user">登陆</i></el-button><el-button type="text" @click="handleLogin" >注册</el-button></div>
-    <div v-else>欢迎{{$store.state.userId}}<el-button type="text" @click="handleLogOut" >退出</el-button></div>
+    <div v-else>欢迎{{$store.state.username}}<el-button type="text" @click="handleLogOut" >退出</el-button></div>
 
     </div>
     </div>
@@ -84,6 +84,7 @@ export default {
           // _this.setToken({token: res.data.token})
           this.$store.commit('setToken', res.data.token)
           this.$store.commit('setUserId', res.data.currentUser.id)
+          this.$store.commit('setUsername', res.data.currentUser.username)
           // this.$axios.get('register')
         } else if (res.data.code === '500') {
           this.$message({ type: 'error', message: res.data.msg })

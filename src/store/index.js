@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
-    userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : ''
+    userId: localStorage.getItem('userId') ? localStorage.getItem('userId') : '',
+    username: localStorage.getItem('username') ? localStorage.getItem('username') : ''
   },
   mutations: {
     setToken (state, token) {
@@ -24,6 +25,14 @@ const store = new Vuex.Store({
     delUserId (state) {
       state.userId = ''
       localStorage.removeItem('userId')
+    },
+    setUsername (state, username) {
+      state.username = username
+      localStorage.setItem('username', username)
+    },
+    delUsername (state) {
+      state.userId = ''
+      localStorage.removeItem('username')
     }
   }
 })

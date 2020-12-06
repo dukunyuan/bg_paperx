@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import md5 from 'js-md5'
 export default {
   name: 'register',
   data () {
@@ -69,9 +70,15 @@ export default {
     register () {
       this.$refs['form'].validate(valid => {
         if (valid) {
-          this.$axios.get('register', this.form).then(res => {
-            console.log('register')
-            console.log(res)
+          this.$axios.post('register', {username: this.form.username, email: this.form.email, password: md5(this.form.password)}).then(res => {
+            // console.log(res)
+            if (res.data.code === '200') {
+              this.$message({ type: 'success', message: '注册成功' })
+            } else if (res.data.code === '500') {
+              this.$message({ type: 'error', message: res.data.msg })
+            } else {
+              this.$message({ type: 'error', message: '登录错误，请联系程序开发人员！' })
+            }
           })
         }
       })
