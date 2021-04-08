@@ -15,9 +15,9 @@
                 mode="horizontal">
           <el-menu-item index="1"><a href="http://localhost:8888/#/welcome" target="_blank" style="text-decoration:none" >首页</a></el-menu-item>
           <el-menu-item index="2">订单提交</el-menu-item>
-          <el-menu-item index="3">推荐奖励</el-menu-item>
+          <!-- <el-menu-item index="3">推荐奖励</el-menu-item>
           <el-menu-item index="4">往期成果</el-menu-item>
-          <el-menu-item index="5">科研工具</el-menu-item>
+          <el-menu-item index="5">科研工具</el-menu-item> -->
           <el-menu-item index="6">关于我们</el-menu-item>
           <!-- <el-menu-item index="7">编辑团队</el-menu-item>
           <el-menu-item index="8">范例评价</el-menu-item>
