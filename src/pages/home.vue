@@ -89,9 +89,9 @@ export default {
         'static/carousel/b.jfif',
         'static/carousel/c.jfif',
         'static/carousel/d.jfif'],
-      img_three_item: [{src: 'static/img_three/g.jpg', word: '英文论文润色'},
-        {src: 'static/img_three/i.jpg', word: '科研论文翻译'},
-        {src: 'static/img_three/g.jpg', word: '发表全程协助'}]
+      img_three_item: [{src: 'static/img_three/1.png', word: '英文论文润色'},
+        {src: 'static/img_three/2.png', word: '科研论文翻译'},
+        {src: 'static/img_three/3.png', word: '发表全程协助'}]
     }
   },
   methods: {
@@ -138,8 +138,8 @@ export default {
     background-color #ebf4fa
     .img_three_item{
       margin 0.625rem
-      height 10.25rem
-      width  15.25rem
+      height 14.25rem
+      width  19.25rem
       .img_three_word{
         font-size:24px
         font-family: "微软雅黑",Arial,sans-serif
