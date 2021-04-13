@@ -85,10 +85,10 @@ export default {
   },
   data () {
     return {
-      carousel_srcs: ['static/carousel/a.jfif',
-        'static/carousel/b.jfif',
-        'static/carousel/c.jfif',
-        'static/carousel/d.jfif'],
+      carousel_srcs: ['static/carousel/home1.png',
+        'static/carousel/home2.png',
+        'static/carousel/home4.png',
+        'static/carousel/home3.png'],
       img_three_item: [{src: 'static/img_three/1.png', word: '英文论文润色'},
         {src: 'static/img_three/2.png', word: '科研论文翻译'},
         {src: 'static/img_three/3.png', word: '发表全程协助'}]

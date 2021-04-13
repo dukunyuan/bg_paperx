@@ -14,27 +14,36 @@
       </div>
       <!--编辑团队-->
       <div class="group_editors">
-        <el-image src="static/edit_group/p10.jpg"> </el-image>
-        <el-image src="static/edit_group/p2.jpg"> </el-image>
-        <el-image src="static/edit_group/p3.jpg"> </el-image>
-        <el-image src="static/edit_group/p4.jpg"> </el-image>
-        <el-image src="static/edit_group/p5.jpg"> </el-image>
-        <el-image src="static/edit_group/p6.jpg"> </el-image>
-        <el-image src="static/edit_group/p7.jpg"> </el-image>
-        <el-image src="static/edit_group/p8.jpg"> </el-image>
-        <el-image src="static/edit_group/p9.jpg"> </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p1.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p2.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p3.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p4.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p5.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p6.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p7.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p8.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p9.jpg" :preview-src-list="srcList" > </el-image>
+        <el-image class="group_editors_member" src="static/edit_group/p10.jpg" :preview-src-list="srcList" > </el-image>
       </div>
     </div>
     <!--广告-->
     <div class="picture">
-      <el-image src="static/edit_group/p1.jpg"> </el-image>
+      <el-image src="static/picture/home3.png"> </el-image>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "homeEditGroup"
+  name: "homeEditGroup",
+  data () {
+    return{
+      srcList:["static/edit_group/p1.jpg","static/edit_group/p2.jpg","static/edit_group/p3.jpg",
+      "static/edit_group/p4.jpg","static/edit_group/p5.jpg","static/edit_group/p6.jpg",
+      "static/edit_group/p7.jpg","static/edit_group/p8.jpg","static/edit_group/p9.jpg",
+      "static/edit_group/p10.jpg"]
+    }
+  }
 };
 </script>
 
@@ -46,10 +55,11 @@ export default {
   justify-content center
   .group{
     flex-direction:row
+    width 50%
     .group_header_title{
       display flex
       height 3rem
-      width 35rem
+
       margin 20px
       margin-bottom 0
       padding 5px
@@ -62,25 +72,31 @@ export default {
     }
     .group_introduce{
       border 1px solid #D5E9E9;
-      width 35rem
+
       margin 20px
       margin-top 0
       padding 5px
     }
     .group_editors{
       display flex
+      flex-wrap wrap
       height 3rem
-      width 35rem
       margin 20px
       margin-bottom 0
       padding 5px
     }
   }
+  .group_editors_member{
+    display flex
+    margin 10px
+    height 15rem
+    width 17%
+  }
   .picture{
     display flex
     margin 20px
     height 50rem
-    width 35rem
+    width 30%
   }
 }
 </style>
