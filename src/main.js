@@ -6,6 +6,9 @@ import App from './App'
 import router from './Router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+//百度地图控件
+import BaiduMap from 'vue-baidu-map'
+
 // 请求
 import store from './store/index'
 import axios from 'axios'
@@ -69,3 +72,8 @@ console.log(error.response)
     }
     return Promise.reject(error.response.data)
   })
+//全局引入百度地图
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'Top8ObDhu337a2HzAXWrpUqISNlIcNEV'   //自己的ak
+})
