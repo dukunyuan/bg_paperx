@@ -46,7 +46,7 @@
       </div>
       <!--图片三栏-->
       <div class='img_three'>
-        <div class='img_three_item' v-for='item in img_three_item' :key= item.word>
+        <div class='img_three_item' v-for='item in img_three_item' :key= item.word @click="imageClick">
           <el-image :src= item.src fit='fill'>
           </el-image>
           <div class="img_three_word">{{item.word}}</div>
@@ -98,6 +98,10 @@ export default {
     seeExample () {
       // console.log('seeExample')
       this.$axios.get('register')
+    },
+    // 图片点击
+    imageClick () {
+      window.open('http://adtsa.mikecrm.com/8tFYXRL', '_blank')
     }
   }
 }

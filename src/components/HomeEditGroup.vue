@@ -35,16 +35,16 @@
 
 <script>
 export default {
-  name: "homeEditGroup",
+  name: 'homeEditGroup',
   data () {
-    return{
-      srcList:["static/edit_group/p1.jpg","static/edit_group/p2.jpg","static/edit_group/p3.jpg",
-      "static/edit_group/p4.jpg","static/edit_group/p5.jpg","static/edit_group/p6.jpg",
-      "static/edit_group/p7.jpg","static/edit_group/p8.jpg","static/edit_group/p9.jpg",
-      "static/edit_group/p10.jpg"]
+    return {
+      srcList: ['static/edit_group/p1.jpg', 'static/edit_group/p2.jpg', 'static/edit_group/p3.jpg',
+        'static/edit_group/p4.jpg', 'static/edit_group/p5.jpg', 'static/edit_group/p6.jpg',
+        'static/edit_group/p7.jpg', 'static/edit_group/p8.jpg', 'static/edit_group/p9.jpg',
+        'static/edit_group/p10.jpg']
     }
   }
-};
+}
 </script>
 
 <style scoped lang="stylus">
