@@ -62,7 +62,7 @@
 </script>
 
 <style>
-.foot-three {
+.footer-three {
    display: flex;
    flex-direction: row
 }
