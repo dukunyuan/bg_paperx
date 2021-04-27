@@ -1,83 +1,80 @@
 <template>
   <div class="footer">
     <!--地址、联系方式、二维码-->
-    <div>
-      <!--地址-->
-      <div>
+    <div class="footer-three">
+      <!--地址1-->
+      <div class="footer-three-map">
         <h3>办公地址</h3>
         <!--地图-->
-        <div>
-          ？
-          <el-image src="static/picture/map.png" @click="mapClick"></el-image>
-        </div>
-        <!-- <baidu-map :center="{lng:104.116729,lat:30.629222} " zoom="17" style="height:300px"></baidu-map> -->
-        <baidu-map
-          :center="centerlist"
-          :zoom="zoomlist"
-          mapType="BMAP_NORMAL_MAP"
-          style="height:16rem"
-          @click="getClickInfos"
-          :scroll-wheel-zoom="true"
-        >
-          <bm-marker
-            :position="centerrlist"
-            :dragging="true"
-            @click="infoWindowOpens"
-            animation="BMAP_ANIMATION_BOUNCE"
-          ></bm-marker
-          >//点击创建点
+        <!-- 百度地图控件2 {lng: 120.743534, lat: 31.276173}-->
+        <baidu-map class="map" :center='center' :zoom='zoom' :scroll-wheel-zoom="true">
+          <bm-marker :position="center" :dragging="true" @click="infoWindowOpen">
+            <bm-info-window :show="show" @close="infoWindowClose" @open="infoWindowOpen">苏州市吴中区苏州大学独墅湖校区<br>199号A05幢3楼
+            </bm-info-window>
+          </bm-marker>
         </baidu-map>
+        <!-- <baidu-map class="map" center="北京"></baidu-map> -->
         <!--文字描述-->
         <div></div>
       </div>
-      <!--联系方式-->
-      <div></div>
-      <!--二维码-->
-      <div>备案信息123456789</div>
+      <!--联系方式2-->
+      <div class="footer-three-phone">
+        <div>邮箱：scibase2018@outlook.com苏州赛贝思网络科技服务有限公司17751280032</div>
+      </div>
+      <!--二维码2-->
+      <div>
+        <el-image src="static/picture/code.png"></el-image>
+      </div>
     </div>
-    <!--备案信息-->
-    <div></div>
+    <!--备案信息1-->
+    <!-- <h3>备案信息123456789</h3> -->
   </div>
 </template>
 
 <script>
-export default {
-  name: 'homeFooter',
-  components: {},
-  data () {
-    return {
-      centerlist: { lng: 116.4, lat: 39.9 }, // 中心点
-      zoomlist: 10, // 放大比例
-      propprovince: '', // 省
-      propcity: '', // 市
-      propcounty: '', // 县
-      propaddress: '' // 详细地址
-    }
-  },
-  methods: {
-    // 图片点击
-    mapClick () {
-      window.open('https://j.map.baidu.com/9b/c5nJ', '_blank')
+  export default {
+    name: 'homeFooter',
+    components: {},
+    data() {
+      return {
+        center: {
+          lng: 120.743534,
+          lat: 31.276173
+        }, // 中心点
+        zoom: 15, // 放大比例
+        show: true //信息显示
+      }
     },
-    // 地图点击事件
-    getClickInfos (e) {
-      console.log(e)
-      let _this = this
-      this.longitude = e.point.lng // 经度
-      this.latitude = e.point.lat // 维度
-      this.centerrlist.lng = _this.longitude // 中心点
-      this.centerrlist.lat = _this.latitude // 中心点
-      let geocoder = new BMap.Geocoder() // 创建地址解析器的实例
-      geocoder.getLocation(e.point, function (rs) {
-        console.log(rs)
-        _this.propprovince = rs.addressComponents.province // 省
-        _this.propcity = rs.addressComponents.city // 市
-        _this.propcounty = rs.addressComponents.district // 县
-        _this.propaddress = rs.addressComponents.address // 详细地址
-      })
+    methods: {
+      // 图片点击
+      mapClick() {
+        window.open('https://j.map.baidu.com/9b/c5nJ', '_blank')
+      },
+      //地图信息点
+      infoWindowClose() {
+        this.show = false
+      },
+      infoWindowOpen() {
+        this.show = true
+      }
     }
   }
-}
 </script>
 
-<style></style>
+<style>
+.foot-three {
+   display: flex;
+   flex-direction: row
+}
+   .footer-three-map{
+     width: 30%;
+   }
+   .footer-three-phone{
+     width: 40%;
+   }
+
+  .map {
+    width: 100%;
+    height: 300px
+  }
+</style>
