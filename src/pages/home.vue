@@ -108,6 +108,12 @@ export default {
 </script>
 
 <style scoped lang='stylus'>
+.main /deep/ .el-footer{
+    padding: 0
+  }
+.main /deep/ .el-main{
+    padding: 0
+  }
   .el-menu{
     display flex
     flex-direction: row
@@ -121,7 +127,7 @@ export default {
   }
   .indexFont{
     text-align: center
-    font-size:24px
+    font-size:30px
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif
     margin 20px
   }
@@ -145,7 +151,7 @@ export default {
       height 14.25rem
       width  19.25rem
       .img_three_word{
-        font-size:24px
+        font-size:30px
         font-family: "微软雅黑",Arial,sans-serif
         position:relative
         margin-bottom 0rem
@@ -158,6 +164,8 @@ export default {
     height 30px
     width 50rem
     .process_five_in{
+      font-family: sans-serif
+      font-size: 21px
       display flex
       flex-direction: row
       justify-content: space-between

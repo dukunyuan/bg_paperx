@@ -49,7 +49,8 @@ export default {
 
 <style scoped lang="stylus">
 .main{
-  height 20%
+  width 100%
+  height auto
   display flex
   align-items flex-start
   justify-content center
@@ -72,7 +73,7 @@ export default {
     }
     .group_introduce{
       border 1px solid #D5E9E9;
-
+      font-family: Helvetica
       margin 20px
       margin-top 0
       padding 5px
@@ -80,7 +81,7 @@ export default {
     .group_editors{
       display flex
       flex-wrap wrap
-      height 3rem
+      height auto
       margin 20px
       margin-bottom 0
       padding 5px
@@ -95,7 +96,7 @@ export default {
   .picture{
     display flex
     margin 20px
-    height 50rem
+
     width 30%
   }
 }

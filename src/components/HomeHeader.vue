@@ -118,6 +118,9 @@ export default {
 </script>
 
 <style scoped lang='stylus'>
+ header.{
+   width 100%
+ }
 .header_logo{
     display flex
     justify-content: space-between
