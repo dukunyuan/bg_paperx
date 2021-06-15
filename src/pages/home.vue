@@ -35,8 +35,8 @@
       </el-carousel>
       <!--文字-->
       <div class="indexFont">
-        彪哥编辑为您提供专业的英文论文修改、润色服务及科研学术论文翻译服务，<br>
-        让您的稿件语言更加准确、地道和优美。
+        苏州赛贝思网络科技服务有限公司（SciBase）：<br>一家由博士团队创立的致力于将中国的科研工作者的优秀科研成果发表在最好的科研期刊上的创业公司。<br>
+        服务内容：（1）科研论文润色、（2）论文写作培训、（3）科研绘图等。
       </div>
       <!--按钮-->
       <div class="h2_button">
@@ -141,7 +141,7 @@ export default {
   }
   .img_three{
     margin 1.25rem
-    height 400px
+    height 500px
     display flex
     flex-direction: row
     justify-content: center
@@ -150,6 +150,7 @@ export default {
       margin 0.625rem
       height 14.25rem
       width  19.25rem
+      justify-content: center
       .img_three_word{
         font-size:30px
         font-family: "微软雅黑",Arial,sans-serif
