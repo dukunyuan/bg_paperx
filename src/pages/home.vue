@@ -13,7 +13,7 @@
       <el-menu default-active="1" class="el-menu"
                 type='flex'
                 mode="horizontal">
-          <el-menu-item index="1"><a href="http://localhost:8888/#/welcome" target="_blank" style="text-decoration:none" >首页</a></el-menu-item>
+          <el-menu-item index="1"><a href=" " target="_blank" style="text-decoration:none" >首页</a></el-menu-item>
           <el-menu-item index="2">订单提交</el-menu-item>
           <!-- <el-menu-item index="3">推荐奖励</el-menu-item>
           <el-menu-item index="4">往期成果</el-menu-item>
