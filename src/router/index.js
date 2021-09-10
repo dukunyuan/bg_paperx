@@ -5,7 +5,7 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     {
-      path: '/welcome',
+      path: '/',
       name: 'welcome',
       component: () => import('../pages/home.vue')
     },

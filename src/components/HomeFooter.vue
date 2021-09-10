@@ -30,7 +30,7 @@
       </div>
     </div>
     <!--备案信息1-->
-    <h4 class="footer-h3">备案信息123456789</h4>
+    <h4 class="footer-info"><el-link type="info" href="https://beian.miit.gov.cn" target="_blank" font-size="20">备案信息-晋ICP备19012844号</el-link></h4>
   </div>
 </template>
 
@@ -112,6 +112,12 @@
     flex-direction: column;
     margin: 2rem;
     width: 30%;
+  }
+  .footer-info{
+    display: flex;
+    justify-content: center;
+    color:#ffffff ;
+    font-size: 30px;
   }
 
   .map {
